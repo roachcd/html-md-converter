@@ -10,6 +10,7 @@ export default function toHtml(html){
         { regex: /`(.*?)`/g, replace: '<code>$1</code>' }, // Inline code
         { regex: /^- (.*)/gm, replace: '<li>$1</li>' }, // Unordered list
         { regex: /^\d+\. (.*)/gm, replace: '<li>$1</li>' }, // Ordered list
+        { regex: /^>\s?(.*)/gm, replace: '<quote>$1</quote>' }, // Ordered list
         //Table Rules
         { regex: /([^|]+[\n](?=\|))/g, replace: '$1\n<table>\n' }, //table start
         { regex:/(\|)+(\n\n)/g, replace: '|\n</table>\n'}, //table end
@@ -28,8 +29,4 @@ export default function toHtml(html){
     html = html.replace(/(<li>.*<\/li>)/g, '<ul>$1</ul>');
 
     return html;
-}
-
-function parseTable(html){
-
 }
