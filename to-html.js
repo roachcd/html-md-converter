@@ -11,6 +11,7 @@ export default function toHtml(html){
         { regex: /^- (.*)/gm, replace: '<li>$1</li>' }, // Unordered list
         { regex: /^\d+\. (.*)/gm, replace: '<li>$1</li>' }, // Ordered list
         { regex: /^>\s?(.*)/gm, replace: '<quote>$1</quote>' }, // Ordered list
+        { regex: /^---/gm, replace: '<hr>' }, // Horizontal rule
         //Table Rules
         { regex: /([^|]+[\n](?=\|))/g, replace: '$1\n<table>\n' }, //table start
         { regex:/(\|)+(\n\n)/g, replace: '|\n</table>\n'}, //table end
@@ -18,7 +19,8 @@ export default function toHtml(html){
         { regex: /(?<=\|)(.*?)(?=\|)/g, replace: '<td>$1</td>' }, // new column
         { regex: /<\/td>\|/g, replace: '</td>' }, // clean up columns
         { regex: /<tr>\|/g, replace: '<tr>' }, // clean up columns
-        { regex: /(<td>)(\s{0,}-{3,}\s{0,})(<\/td>)/g, replace: '' } // clean up columns
+        { regex: /(<td>)(\s{0,}-{3,}\s{0,})(<\/td>)/g, replace: '' }, // clean up columns
+        { regex: /(\w)+(\n)/g, replace: '$&<br>\n' }, // Ensure line breaks show correctly
     ]
 
     rules.forEach(rule => {

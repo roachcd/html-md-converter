@@ -8,8 +8,8 @@ const markdown = `
 ##### H5
 ###### H6
 
-This is some <b> Strong </b> text<br>
-This is some <i> italics </i> text<br>
+This is some <b> Strong </b> text
+This is some <i> italics </i> text
 
 This is also some **Strong** text
 This is also some *italics* text
@@ -18,7 +18,6 @@ This is also some *italics* text
 |--- | --- |
 |Data 1 | Data 2 |
 | Data 3 | Data 4|
-
 
 |Header 1|Header 2|Header 3|
 |---|---|---|
@@ -39,3 +38,5 @@ Normal text with **bold** and *italic*.
 `;
 
 document.getElementById("html").innerHTML = convert(1, markdown);
+
+convert(0, document.getElementById("html").innerHTML);
